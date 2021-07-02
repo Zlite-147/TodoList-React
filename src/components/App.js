@@ -2,40 +2,40 @@ import React, { useState, useEffect } from "react";
 import { uuid } from "uuidv4";
 import "./App.css";
 import Header from "./Header";
-import AddContact from "./AddContact";
-import ContactList from "./ContactList";
+import AddTodos from "./AddTodo";
+import TodosList from "./TodosList";
 
 function App() {
-  const LOCAL_STORAGE_KEY = "contacts";
-  const [contacts, setContacts] = useState([]);
+  const LOCAL_STORAGE_KEY = "todos";
+  const [todos, setTodos] = useState([]);
 
-  const addContactHandler = (contact) => {
-    console.log(contact);
-    setContacts([...contacts, { id: uuid(), ...contact }]);
+  const addTodosHandler = (Todos) => {
+    console.log(Todos);
+    setTodos([...todos, { id: uuid(), ...Todos }]);
   };
 
-  const removeContactHandler = (id) => {
-    const newContactList = contacts.filter((contact) => {
-      return contact.id !== id;
+  const removeTodosHandler = (id) => {
+    const newTodosList = todos.filter((Todos) => {
+      return Todos.id !== id;
     });
 
-    setContacts(newContactList);
+    setTodos(newTodosList);
   };
 
   useEffect(() => {
-    const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (retriveContacts) setContacts(retriveContacts);
+    const retriveTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (retriveTodos) setTodos(retriveTodos);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
-  }, [contacts]);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div className="ui container">
       <Header />
-      <AddContact addContactHandler={addContactHandler} />
-      <ContactList contacts={contacts} getContactId={removeContactHandler} />
+      <AddTodos addTodosHandler={addTodosHandler} />
+      <TodosList todos={todos} getTodosId={removeTodosHandler} />
     </div>
   );
 }

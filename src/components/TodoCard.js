@@ -1,14 +1,14 @@
 import React from "react";
-import user from "../images/user.png";
+import user from "../images/pencil.png";
 
-const ContactCard = (props) => {
-  const { id, name, email } = props.contact;
+const TodoCard = (props) => {
+  const { id, name, desc } = props.Todos;
   return (
     <div className="item">
       <img className="ui avatar image" src={user} alt="user" />
       <div className="content">
         <div className="header">{name}</div>
-        <div>{email}</div>
+        <div>{desc}</div>
       </div>
       <i
         className="trash alternate outline icon"
@@ -19,4 +19,4 @@ const ContactCard = (props) => {
   );
 };
 
-export default ContactCard;
+export default TodoCard;
