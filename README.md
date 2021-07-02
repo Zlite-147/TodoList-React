@@ -1,8 +1,8 @@
 # Todo List With LocalStorage developed in React Js
 
 ### Implementation Of TodoList
-- ![](images/screenshot1.jpg)
-- ![](images/screenshot02.jpg)
+- ![](src/images/Screenshot_1.png)
+- ![](src/images/Screenshot_02.png)
 
 ---
 ### Technology Used
